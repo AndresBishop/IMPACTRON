@@ -320,11 +320,11 @@ shinyServer (function(input, output){
   #Map
   ############################
   
-  tcu_map <-"https://api.mapbox.com/styles/v1/kairocafe/cjdbx69g5c6mb2ska05ru6nw9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoia2Fpcm9jYWZlIiwiYSI6ImNpZ2J6Zmo4aTFyYmJ0am01NDZlbGk3bGcifQ.btP13aTsFPT7MrmdWB8New"  
+   
   data_of_click <- reactiveValues(clickedMarker=NULL)
   output$MapPlot1 <- renderLeaflet({
     
-    leaflet(data = df) %>% addTiles(urlTemplate = tcu_map) %>%
+    leaflet(data = df) %>% addTiles() %>%
       addCircleMarkers(data=df, ~lng , ~lat, layerId=~station, popup=~station, radius=8 , color="black",  fillColor="purple", stroke = TRUE, fillOpacity = 0.8, clusterOptions = markerClusterOptions(fillColor = "blue"))%>%
       addMiniMap(
         toggleDisplay = TRUE)%>%
